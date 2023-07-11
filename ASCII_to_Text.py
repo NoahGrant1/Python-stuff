@@ -7,13 +7,13 @@ while not exitMenu:
 
 # Add to message list
 if selection.isnumeric():
-   message.append(int(selection))
+    message.append(int(selection))
 # display the decoded message
  elif selection.lower() == "decode":
-  exitMenu = True
+    exitMenu = True
 
 # print the message
  for char in message:
     print(chr(char))
  else:
-  print("Invalid Symbol. Please Enter Again")
+    print("Invalid Symbol. Please Enter Again")
