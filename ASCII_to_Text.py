@@ -21,7 +21,9 @@ while not exitMenu:
         print("Exiting Program")
         break
 
-    # process string into list of int
+    # process string into list of int and remove punctuation
+    ASCII_Input = ASCII_Input.strip("[").strip("]")
+    ASCII_Input = ASCII_Input.replace(",", "")
     ASCII_Input = ASCII_Input.split(" ")
 
     # convert to int and catch errors
