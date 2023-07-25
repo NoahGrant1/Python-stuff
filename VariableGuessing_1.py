@@ -49,8 +49,8 @@ questions = [("Enter an integer:", "int"),
              ("Enter a boolean: ", "bool"),
              ("Enter a float: ", "float"),
              ("Enter a string: ", "str"),
-             ("Enter a list: (seperate items with space) ", "list"),
-             ("Enter a dictionary: (seperate items with : )", "dict")]
+             ("Enter a list: (separate items with space) ", "list"),
+             ("Enter a dictionary: (separate items with : )", "dict")]
 while not loop:
     # choose random question and get answer from user
     question = random.randint(0, len(questions) - 1)
@@ -64,15 +64,16 @@ while not loop:
     elif answer.replace(".", "").isnumeric() and questions[question][1] == "float" \
             and is_int(answer) is False:
         print("correct")
-    # check string question
-    elif answer.isalpha() and questions[question][1] == "str":
+    # check string question - replaces punctuation with characters to pass check
+    # make empty string and only add alpha characters
+    elif ''.join(e for e in answer if e.isalpha()) and questions[question][1] == "str":
         print("correct")
     # check boolean question
     elif answer.lower() == ("true" or "false") and questions[question][1] == "bool":
         print("correct")
     # check list question
     elif questions[question][1] == "list":
-        # if more then 2 elements and determine respond with answer
+        # if more than 2 elements and determine respond with answer
         if len(make_list(answer)) >= 2:
             print("correct")
         else:
