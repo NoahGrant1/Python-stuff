@@ -69,7 +69,7 @@ while not loop:
     elif ''.join(e for e in answer if e.isalpha()) and questions[question][1] == "str":
         print("correct")
     # check boolean question
-    elif answer.lower() == ("true" or "false") and questions[question][1] == "bool":
+    elif answer.lower() == "true" or "false" and questions[question][1] == "bool":
         print("correct")
     # check list question
     elif questions[question][1] == "list":
