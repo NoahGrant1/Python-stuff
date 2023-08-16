@@ -10,6 +10,7 @@
 from tkinter import *
 import random
 
+
 # global variables
 class game_data:
     count = 1
@@ -31,7 +32,7 @@ def generate_question():
 
     # create shortened expected answer
     game_data.correct_answer = [item[0] for item in game_data.question]  # extract first letter from list
-    game_data.correct_answer = ' '.join(game_data.correct_answer)  # make list into string
+    game_data.correct_answer = ''.join(game_data.correct_answer)  # make list into string
     game_data.correct_answer = ''.join(e for e in game_data.correct_answer if e.isalpha())  # purge space
 
     # display the question
@@ -40,7 +41,6 @@ def generate_question():
 
 # display incorrect or correct based on user input
 def check_answer_function(correct_answer: str):
-
     # correct answer
     if user_input.get(1.0, "end-1c") == correct_answer:
         message = display.create_text(50, 100, text="correct, increasing difficulty")
@@ -52,7 +52,8 @@ def check_answer_function(correct_answer: str):
         message = display.create_text(50, 50, text="Incorrect")
 
     # display message in game
-    game_data.correct_answer = ""
+    #game_data.correct_answer = ""
+    user_input.delete(1.0, 'end')
     display.moveto(message, 50, 50)
     display.update()
 
@@ -63,7 +64,6 @@ def check_answer_function(correct_answer: str):
 
 # Display each colour for 1 secs
 def display_colour(question: list):
-
     # loop through colours and display for 1 sec
     for item in question:
         # display colour
@@ -110,6 +110,7 @@ end_game = Button(root, height=2,
                   text="End",
                   command=lambda: exit(0))
 
+
 intro.pack()
 start_game.pack()
 user_input.pack()
@@ -117,3 +118,4 @@ display.pack()
 check_answer_button.pack()
 end_game.pack()
 mainloop()
+
