@@ -65,9 +65,12 @@ def display_colour(question: list):
         display.update()
         time.sleep(0.5)
 
+# add colour on button press
+def add_colour(colour: str):
+    game_data.user_answer += colour
 
 # use 4 buttons for input
-def check_answer_function(colour: str):
+def check_answer_function():
     # If all colours selected then proceed
     if len(game_data.user_answer) == game_data.count:
         # correct answer
@@ -75,7 +78,7 @@ def check_answer_function(colour: str):
             message = display.create_text(50, 100, text="correct, increasing difficulty")
             clear_data()
             # increase the difficulty via count if correct answer
-            if game_data.count != game_data.max_count and colour != "":
+            if game_data.count != game_data.max_count:
                 game_data.count += 1
         # incorrect answer
         else:
@@ -89,10 +92,6 @@ def check_answer_function(colour: str):
         # remove message from screen
         display.after(2000, display.delete(message))
         display.update()
-
-    # Add new character to existing answer
-    else:
-        game_data.user_answer += colour
 
 
 # GUI setup commands
@@ -119,7 +118,7 @@ end_game = Button(root, height=2, width=20, text="End",
 
 # check the user inputted answer
 check_answer_button = Button(root, height=2, width=20, text="Check"
-                             , command=lambda: check_answer_function(""), bg='slategray4')
+                             , command=lambda: check_answer_function(), bg='slategray4')
 
 # reset difficulty  button
 reset_difficulty = Button(root, height=2, width=20, text="Reset Difficulty"
@@ -127,13 +126,13 @@ reset_difficulty = Button(root, height=2, width=20, text="Reset Difficulty"
 
 # buttons for user input
 red_button = Button(root, bg=game_data.colours[0], width=20,
-                    command=lambda: check_answer_function("r"))
+                    command=lambda: add_colour("r"))
 blue_button = Button(root, bg=game_data.colours[1], width=20,
-                     command=lambda: check_answer_function("b"))
+                     command=lambda: add_colour("b"))
 yellow_button = Button(root, bg=game_data.colours[2], width=20,
-                       command=lambda: check_answer_function("y"))
+                       command=lambda: add_colour("y"))
 green_button = Button(root, bg=game_data.colours[3], width=20,
-                      command=lambda: check_answer_function("g"))
+                      command=lambda: add_colour("g"))
 
 # GUI design
 intro.grid(row=0, column=1, sticky=W, pady=2, columnspan=3)
