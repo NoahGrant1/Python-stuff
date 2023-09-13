@@ -1,7 +1,8 @@
 # Simon Game
 # Author: Noah Grant
 # issues:
-#  rework check function to accept nothing
+# On MAC OS colours will not be displayed correctly. To get them to work change the bg or background parameters
+# to highlightbackground to solve the issue. This is due to a difference in how Tktintr works in mac and windows. 
 
 from tkinter import *
 import time
